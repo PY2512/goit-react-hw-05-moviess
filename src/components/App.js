@@ -1,7 +1,7 @@
 import {Component} from "react";
 import Buttons from "./Buttons/Buttons";
 import SectionTitle from "./Title/SectionTitle"
-import Statistics from "./Statiatics/Statistics";
+import Statistics from "./Statistics/Statistics";
 import Notification from "./Notification/Notification";
 
 
