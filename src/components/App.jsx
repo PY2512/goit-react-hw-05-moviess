@@ -40,18 +40,6 @@ class App extends Component {
           neutral={this.state.neutral}
           bad={this.state.bad}
         />)}
-        {/* if (this.countTotalFeedback() === 0) {
-          return <h2>No feedback given</h2>
-        }
-        return
-         */}
-        {/* <Statistics
-          countTotalFeedback={this.countTotalFeedback}
-          countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage}
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-        /> */}
       </>
       
     );
