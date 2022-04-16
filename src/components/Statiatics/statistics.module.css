@@ -1,0 +1,12 @@
+.statisticHead {
+    color: black;
+    font-size: 25px;
+    font-weight: 500;
+    display: flex;
+    justify-content: left;
+}
+
+.statisticSpan {
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
