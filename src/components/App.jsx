@@ -34,7 +34,7 @@ class App extends Component {
       <>
         <SectionTitle />
         <Buttons handleIncrement={handleIncrement}/>
-        {countTotalFeedback() === 0 ? (<Notification message="No feedback given" />) : 
+        {countTotalFeedback() === 0 ? (<Notification message="!!!!!!!!!!!!!" />) : 
         <Statistics
           countTotalFeedback={countTotalFeedback}
           countPositiveFeedbackPercentage={countPositiveFeedbackPercentage}
