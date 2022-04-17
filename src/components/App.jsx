@@ -28,18 +28,20 @@ class App extends Component {
     };
 
   render() {
+    const {good, neutral, bad} = this.state;
+    const {countTotalFeedback, countPositiveFeedbackPercentage, handleIncrement} = this;
     return (
       <>
         <SectionTitle />
-        <Buttons handleIncrement={this.handleIncrement}/>
-        {this.countTotalFeedback() === 0 ? (<Notification message="No feedback given" />) : 
-        (<Statistics
-          countTotalFeedback={this.countTotalFeedback}
-          countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage}
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-        />)}
+        <Buttons handleIncrement={handleIncrement}/>
+        {countTotalFeedback() === 0 ? (<Notification message="No feedback given" />) : 
+        <Statistics
+          countTotalFeedback={countTotalFeedback}
+          countPositiveFeedbackPercentage={countPositiveFeedbackPercentage}
+          good={good}
+          neutral={neutral}
+          bad={bad}
+        />}
       </>
       
     );
