@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 
 class Modal extends Component {
+    
     handleKeyDown = event => {
         if (event.keyCode === 27){
             this.props.onModalClose();
@@ -9,7 +10,8 @@ class Modal extends Component {
     };
 
     handleBackdropClick = event => {
-        if (event.current.Target === event.target) {
+        console.log(event);
+        if (event.currentTarget === event.target) {
             this.props.onModalClose();
         }
     };
