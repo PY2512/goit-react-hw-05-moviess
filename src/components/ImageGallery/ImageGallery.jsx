@@ -4,6 +4,7 @@ import fetchImages from "pixabay-api";
 import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem";
 import Button from "components/Button/Button";
 import Modal from "components/Modal/Modal";
+import Loader from "components/Loader/Loader";
 
 const Status = {
     IDLE: 'idle',
@@ -20,16 +21,17 @@ class ImageGallery extends Component {
         showModal: false,
         activeImg: null,
         lastPage: 1,
-        // loading: false,
+        loading: false,
     }
 
     componentDidUpdate(prevProps, prevState) {
         const { searchImageName } = this.props;
+        
 
         if (prevProps.searchImageName !== searchImageName) {
             this.setState({images: []}, () => {
-                this.loadImages(1);
-            });
+                this.loadImages(1) 
+            } );
         }
 
         if (prevState.images !== this.state.images) {
@@ -46,7 +48,7 @@ class ImageGallery extends Component {
         const {images } = this.state;
         const { searchImageName } = this.props;
 
-        this.setState({ loading: true, lastPage: page});
+        this.setState({ loading: true, lastPage: page, status: Status.RESOLVED});
         setTimeout(() => {
             fetchImages(searchImageName, page)
             .then(({hits, total}) => {
@@ -87,15 +89,19 @@ class ImageGallery extends Component {
     render() {
         const {images, error, status, showModal, activeImg} = this.state;
 
-        if (status === Status.IDLE){
+        if (status === 'idle'){
             return <div className="errorMessage">Please enter your request</div>
         }
 
-        if (status === Status.REJECTED) {
+        if (status === 'pending') {
+            <Loader />;
+    }
+
+        if (status === 'rejected') {
             return <h1>{error.message}</h1>
         }
 
-        if (status === Status.RESOLVED){
+        if (status === 'resolved'){
             return (
                 <>
                 <ul className="ImageGallery">
@@ -108,7 +114,7 @@ class ImageGallery extends Component {
                     ))}
                 </ul>
 
-                {/* {loading && <Loader />} */}
+                {this.state.loading && <Loader />}
                 <Button onBtnClick={this.onBtnClick} />
     
                 {showModal && (

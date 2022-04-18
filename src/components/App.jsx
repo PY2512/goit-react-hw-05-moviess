@@ -22,7 +22,6 @@ class App extends Component {
       <div className="App">
         <ToastContainer />
 
-        {/* в Searchbar передаю проп submit(имя пропса), куда я передаю ссылку на метод handleFormSubmit */}
         <Searchbar submit={this.handleFormSubmit} />
         <ImageGallery searchImageName={searchImageName} />
       </div>
