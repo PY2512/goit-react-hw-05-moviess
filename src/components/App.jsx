@@ -21,6 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <ToastContainer />
+        <h2>Hello my friends!!!</h2>
 
         <Searchbar submit={this.handleFormSubmit} />
         <ImageGallery searchImageName={searchImageName} />
