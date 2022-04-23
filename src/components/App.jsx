@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-
+      <h1>Hello my Friends!!!</h1>
       <Searchbar submit={setSearchImageName} />
       <ImageGallery searchImageName={searchImageName} />
     </div>
