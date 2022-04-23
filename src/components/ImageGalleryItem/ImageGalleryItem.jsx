@@ -1,19 +1,18 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 
 const ImageGalleryItem = ({
-    image: {webformatURL, tag},
+    image: { webformatURL, tags },
     image,
     onModalOpen,
-}) => {
-    return (
-        <li className='ImageGalleryItem' onClick={()=>onModalOpen(image)}>
-            <img className='ImageGalleryItem-image' src={webformatURL} alt={tag}/>
-        </li>
-    );
-}
+    }) => (
+    <li className="ImageGalleryItem" onClick={() => onModalOpen(image)}>
+        <img src={webformatURL} alt={tags} className="ImageGalleryItem-image" />
+    </li>
+);
 
-ImageGalleryItem.propTypes ={
+ImageGalleryItem.propTypes = {
     image: PropTypes.shape({
         webformatURL: PropTypes.string,
         tags: PropTypes.string,
