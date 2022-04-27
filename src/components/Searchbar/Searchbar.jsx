@@ -1,49 +1,47 @@
-// import React, {Component} from "react";
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
-function Searchbar({ submit }) {
-const [searchImageName, setSearchImageName] = useState('');
+import style from './Searchbar.module.css';
 
-const handleImageChange = ({ currentTarget: { value } }) => {
-    setSearchImageName(value.toLowerCase());
-};
+function Searchbar({ onSubmit }) {
+    const [query, setQuery] = useState('');
 
-const handleSubmit = event => {
-    event.preventDefault();
+    const handleChange = ({ currentTarget }) => {
+        setQuery(currentTarget.value);
+    };
 
-    if (searchImageName.trim() === '') {
-    return toast.error('What picture do you need?');
-    }
+    const handleSubmit = event => {
+        event.preventDefault();
+        if (query.trim() === '') {
+        toast.info('Enter the name of movie to search ');
+        return;
+        }
+        onSubmit(query);
+        setQuery('');
+    };
 
-    submit(searchImageName);
-    setSearchImageName('');
-};
-
-return (
-    <header className="Searchbar">
-    <form className="SearchForm" onSubmit={handleSubmit}>
-        <button type="submit" className="SearchForm-button">
-        <span className="SearchForm-button-label">Search</span>
-        </button>
-
-        <input
-        className="SearchForm-input"
-        type="text"
-        autoComplete="off"
-        autoFocus
-        placeholder="Search images and photos"
-        value={searchImageName}
-        onChange={handleImageChange}
-        />
-    </form>
-    </header>
-);
+    return (
+        <>
+        <form className={style.Searchbar} onSubmit={handleSubmit}>
+            <input
+            className={style.SearchForm}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search movies"
+            onChange={handleChange}
+            />
+            <button type="submit" className={style.SearchFormButton}>
+            <span className={style.SearchFormButtonLabel}>Search</span>
+            </button>
+        </form>
+        </>
+    );
 }
 
 Searchbar.propTypes = {
-    submit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 };
 
 export default Searchbar;
